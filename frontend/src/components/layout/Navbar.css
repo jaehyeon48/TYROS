@@ -36,3 +36,39 @@
   border-color: #78a8a4;
   transition: all 0.2s linear;
 }
+
+.navbar-bars {
+  display: flex;
+  align-items: center;
+  grid-column: 25 / span 2;
+  font-size: 38px;
+  display: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.fa-bars:hover {
+  color: #78a8a4 !important;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .navbar-auth-links {
+    grid-column: 22 / span 8;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-auth-links {
+    display: none;
+  }
+
+  .navbar-bars {
+    display: block;
+  }
+
+  @media only screen and (max-width: 420px) {
+    .navbar-bars {
+      grid-column: 21 / span 2;
+    }
+  }
+}
