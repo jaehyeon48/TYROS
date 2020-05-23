@@ -98,6 +98,46 @@ body {
   margin-bottom: 3rem;
 }
 
+.form-group {
+  position: relative;
+}
+
+.form-field {
+  outline: none;
+  width: 100%;
+  border: 1px solid #d3dbc5;
+  border-radius: 1.1rem;
+  background-color: #e8f0fe;
+  padding: 0.6rem;
+  color: #343a40;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.form-label {
+  position: absolute;
+  color: #d3dbc5;
+  top: -26px;
+  left: 5px;
+}
+
+.btn {
+  display: inline-block;
+  background: #428a87;
+  color: #fff;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+}
+
+.btn:hover {
+  opacity: 0.7;
+}
+
 /* Padding */
 .p-half {
   padding: 0.5rem;
