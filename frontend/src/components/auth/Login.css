@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: repeat(20, 1fr);
   grid-template-rows: 46px 60px 46px 80px 40px 30px;
-  margin: 5rem 10rem 0 0;
+  margin: 3rem 10rem 0 0;
 }
 
 .group-login-email {
@@ -43,7 +43,7 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .form-login {
-    margin: 5rem 8rem 0 0;
+    margin: 3rem 8rem 0 0;
   }
 }
 
@@ -57,7 +57,7 @@
   }
 
   .form-login {
-    margin: 5rem 6rem 0 0;
+    margin: 3rem 6rem 0 0;
   }
 }
 
@@ -73,7 +73,7 @@
   }
 
   .form-login {
-    margin: 5rem 3rem 0 0;
+    margin: 3rem 3rem 0 0;
   }
 }
 
@@ -89,6 +89,6 @@
   }
 
   .form-login {
-    margin: 5rem 1rem 0 0;
+    margin: 3rem 1rem 0 0;
   }
 }

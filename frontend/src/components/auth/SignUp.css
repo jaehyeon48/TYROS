@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: repeat(20, 1fr);
   grid-template-rows: 46px 75px 46px 75px 46px 80px 40px 30px;
-  margin: 5rem 10rem 0 0;
+  margin: 3rem 10rem 0 0;
 }
 
 .group-signUp-firstName {
@@ -71,7 +71,7 @@
   }
 
   .form-signUp {
-    margin: 5rem 5rem 0 0;
+    margin: 3rem 5rem 0 0;
   }
 
   .signup-subtitle {
@@ -87,7 +87,7 @@
   }
 
   .form-signUp {
-    margin: 5rem 1rem 0 0;
+    margin: 3rem 1rem 0 0;
   }
 
   .signup-subtitle {
@@ -112,7 +112,7 @@
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     grid-template-rows: 46px 60px 46px 60px 46px 60px 46px 60px 50px 20px;
-    margin: 5rem 2rem 0 0;
+    margin: 3rem 2rem 0 0;
   }
 
   .group-signUp-firstName {
@@ -148,6 +148,6 @@
 
 @media only screen and (max-width: 375px) {
   .form-signUp {
-    margin: 5rem 1rem 0 0;
+    margin: 3rem 1rem 0 0;
   }
 }
