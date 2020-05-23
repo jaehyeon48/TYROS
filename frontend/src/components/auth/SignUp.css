@@ -1,0 +1,29 @@
+.signup-title {
+  font-size: 54px;
+  color: #78a8a4;
+}
+
+.signup-subtitle {
+  font-size: 30px;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .signup-title {
+    font-size: 39px;
+  }
+
+  .signup-subtitle {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .signup-title {
+    font-size: 31px;
+  }
+
+  .signup-subtitle {
+    font-size: 20px;
+  }
+}

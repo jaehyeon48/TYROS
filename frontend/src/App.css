@@ -27,8 +27,32 @@
   font-weight: 900;
   src: url('./fonts/Montserrat-ExtraBold.ttf');
 }
-html {
+
+/* Global Styles */
+:root {
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --light-color: #f4f4f4;
+  --warning-color: #ffc415;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+  --orange-color: #f68440;
+  --darkgray-color: #b8b8b8;
+  --main-color: #78a8a4;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: #fff;
+  background-color: #333745;
 }
 
 body {
@@ -37,6 +61,103 @@ body {
   background-color: #333745;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-dark {
+  color: var(--dark-color);
+}
+
+.text-orange {
+  color: var(--orange-color);
+}
+
+.text-main {
+  color: var(--main-color);
+}
+
 .main-container {
-  padding-top: 58px;
+  padding-top: 74px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+}
+
+/* Padding */
+.p-half {
+  padding: 0.5rem;
+}
+.p-1 {
+  padding: 1rem;
+}
+.p-1half {
+  padding: 1.5rem;
+}
+.p-2 {
+  padding: 2rem;
+}
+.p-3 {
+  padding: 3rem;
+}
+.py-half {
+  padding: 0.5rem 0;
+}
+.py-1 {
+  padding: 1rem 0;
+}
+.py-1half {
+  padding: 1.5rem 0;
+}
+.py-2 {
+  padding: 2rem 0;
+}
+.py-3 {
+  padding: 3rem 0;
+}
+
+/* Margin */
+.m-half {
+  margin: 0.5rem;
+}
+.m-1 {
+  margin: 1rem;
+}
+.m-1half {
+  margin: 1.5rem;
+}
+.m-2 {
+  margin: 2rem;
+}
+.m-3 {
+  margin: 3rem;
+}
+.my {
+  margin: 0.5rem 0;
+}
+.my-1 {
+  margin: 1rem 0;
+}
+.my-1half {
+  margin: 1.5rem 0;
+}
+.my-2 {
+  margin: 2rem 0;
+}
+.my-3 {
+  margin: 3rem 0;
 }

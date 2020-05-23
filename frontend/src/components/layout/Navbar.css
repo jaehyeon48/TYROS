@@ -6,7 +6,33 @@
   background-color: #24292e;
 }
 
-.test {
+.navbar-auth-links {
+  display: flex;
+  align-items: center;
+  grid-column: 24 / span 7;
+}
+
+.navbar-login {
   color: #fff;
-  grid-column: 25 / span 5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.navbar-login:hover {
+  color: #78a8a4;
+  transition: color 0.2s linear;
+}
+
+.navbar-signUp {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  border-radius: 0.25rem;
+  padding: 0.6rem;
+}
+
+.navbar-signUp:hover {
+  color: #78a8a4;
+  border-color: #78a8a4;
+  transition: all 0.2s linear;
 }
