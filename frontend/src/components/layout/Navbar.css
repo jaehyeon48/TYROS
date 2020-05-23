@@ -107,11 +107,6 @@
   cursor: pointer;
 }
 
-.fa-bars:hover,
-.fa-times:hover {
-  color: #78a8a4;
-}
-
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .navbar-auth-links {
     grid-column: 22 / span 8;
