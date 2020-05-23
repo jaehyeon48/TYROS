@@ -34,7 +34,7 @@
   display: flex;
   align-items: center;
   grid-row: 1;
-  grid-column: 5 / span 10;
+  grid-column: 5 / span 22;
   color: #fff;
 }
 
@@ -52,7 +52,7 @@
 .landing-header-subtitle {
   grid-row: 2;
   grid-column: 5 / span 12;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 400;
   color: #fff;
 }
@@ -60,4 +60,85 @@
 .landing-section {
   background-color: #fafbfc;
   height: 1000px;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+  .landing-header {
+    background-size: 105vw 100vh;
+  }
+
+  .landing-header-title {
+    grid-column: 5 / span 22;
+  }
+
+  .landing-header-title h1 {
+    font-size: 46px;
+  }
+
+  .landing-header-subtitle {
+    font-size: 24px;
+    grid-column: 5 / span 12;
+  }
+}
+
+/*  Tablets in portrait mode, large display smartphones landscape mode */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .landing-header {
+    background-size: 110vw 100vh;
+  }
+  .landing-header-title {
+    grid-column: 5 / span 22;
+  }
+
+  .landing-header-title h1 {
+    font-size: 45px;
+  }
+
+  .landing-header-subtitle {
+    font-size: 22px;
+    grid-column: 5 / span 14;
+  }
+}
+
+/*  Smartphones in landscape mode */
+
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+  .landing-header {
+    background-size: 115vw 100vh;
+  }
+
+  .landing-header-title {
+    grid-column: 5 / span 22;
+  }
+
+  .landing-header-title h1 {
+    font-size: 43px;
+  }
+
+  .landing-header-subtitle {
+    font-size: 21px;
+    grid-column: 5 / span 16;
+  }
+}
+
+/*  Smartphones in portrait mode  */
+
+@media only screen and (max-width: 420px) {
+  .landing-header {
+    background-size: 130vw 100vh;
+  }
+
+  .landing-header-title {
+    grid-column: 5 / span 22;
+  }
+
+  .landing-header-title h1 {
+    font-size: 38px;
+  }
+
+  .landing-header-subtitle {
+    font-size: 18px;
+    grid-column: 5 / span 20;
+  }
 }
