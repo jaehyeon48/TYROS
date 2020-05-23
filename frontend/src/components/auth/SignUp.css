@@ -4,6 +4,9 @@
 }
 
 .signup-subtitle {
+  position: relative;
+  top: 26px;
+  left: 7px;
   font-size: 30px;
   color: #fff;
 }
@@ -11,26 +14,26 @@
 .form-signUp {
   display: grid;
   grid-template-columns: repeat(20, 1fr);
-  grid-template-rows: 46px 75px 46px 75px 46px 80px 40px;
+  grid-template-rows: 46px 75px 46px 75px 46px 80px 40px 30px;
   margin: 5rem 10rem 0 0;
 }
 
-.group-firstName {
+.group-signUp-firstName {
   grid-row: 1;
   grid-column: 1 / span 9;
 }
 
-.group-lastName {
+.group-signUp-lastName {
   grid-row: 1;
   grid-column: 11 / span 9;
 }
 
-.group-email {
+.group-signUp-email {
   grid-row: 3;
   grid-column: 1 / span 19;
 }
 
-.group-password {
+.group-signUp-password {
   grid-row: 5;
   grid-column: 1 / span 19;
 }
@@ -48,6 +51,20 @@
   border-radius: 0.2rem;
 }
 
+.have-account {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.have-account a {
+  text-decoration: none;
+  color: #78a8a4;
+}
+
+.have-account a:hover {
+  opacity: 0.7;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .signup-title {
     font-size: 43px;
@@ -58,6 +75,8 @@
   }
 
   .signup-subtitle {
+    top: 20px;
+    left: 6px;
     font-size: 24px;
   }
 }
@@ -72,6 +91,8 @@
   }
 
   .signup-subtitle {
+    top: 16px;
+    left: 5px;
     font-size: 24px;
   }
 }
@@ -82,32 +103,34 @@
   }
 
   .signup-subtitle {
+    top: 12px;
+    left: 2px;
     font-size: 18px;
   }
 
   .form-signUp {
     display: grid;
     grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: 46px 60px 46px 60px 46px 60px 46px 60px 50px;
+    grid-template-rows: 46px 60px 46px 60px 46px 60px 46px 60px 50px 20px;
     margin: 5rem 2rem 0 0;
   }
 
-  .group-firstName {
+  .group-signUp-firstName {
     grid-row: 1;
     grid-column: 1 / span 20;
   }
 
-  .group-lastName {
+  .group-signUp-lastName {
     grid-row: 3;
     grid-column: 1 / span 20;
   }
 
-  .group-email {
+  .group-signUp-email {
     grid-row: 5;
     grid-column: 1 / span 20;
   }
 
-  .group-password {
+  .group-signUp-password {
     grid-row: 7;
     grid-column: 1 / span 20;
   }
@@ -115,5 +138,16 @@
   .group-btn-signUp {
     grid-row: 9;
     grid-column: 1 / span 20;
+  }
+
+  .have-account {
+    font-size: 1.1rem;
+    color: #fff;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .form-signUp {
+    margin: 5rem 1rem 0 0;
   }
 }
