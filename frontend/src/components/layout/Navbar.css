@@ -1,0 +1,12 @@
+.navbar {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  position: fixed;
+  margin: 0;
+  background-color: #24292e;
+}
+
+.test {
+  color: #fff;
+  grid-column: 25 / span 5;
+}

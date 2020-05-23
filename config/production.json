@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://jason:fhfxm0248@cluster0-mudf1.mongodb.net/tyros?retryWrites=true&w=majority",
+  "jwtSecret": "hellomynameisjasonruperthudson10230"
+}
