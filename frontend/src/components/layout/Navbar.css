@@ -1,9 +1,69 @@
+.navbar-container {
+  position: relative;
+}
+
 .navbar {
   display: grid;
   grid-template-columns: repeat(30, 1fr);
   position: fixed;
   margin: 0;
   background-color: #24292e;
+}
+
+.navbar-sideMenu {
+  position: absolute;
+  background-color: rgb(252, 255, 249);
+  right: 0;
+  top: 80px;
+  height: 150px;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.navbar-sideMenu-hidden {
+  display: none;
+}
+
+.side-login {
+  display: flex;
+  align-items: center;
+  grid-row: 1;
+  grid-column: 2 / span 8;
+  font-size: 20px;
+  border-bottom: 1px solid rgb(146, 146, 146);
+  cursor: pointer;
+}
+
+.side-login:hover {
+  background-color: #eee;
+}
+
+.side-login a {
+  color: #27272e;
+  text-decoration: none;
+}
+
+.side-signUp {
+  display: flex;
+  align-items: center;
+  grid-row: 2;
+  grid-column: 2 / span 8;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.side-signUp:hover {
+  background-color: #eee;
+}
+
+.side-signUp a {
+  color: #27272e;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  padding-top: 3px;
 }
 
 .navbar-auth-links {
@@ -47,7 +107,8 @@
   cursor: pointer;
 }
 
-.fa-bars:hover {
+.fa-bars:hover,
+.fa-times:hover {
   color: #78a8a4 !important;
 }
 
