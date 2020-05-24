@@ -29,7 +29,7 @@ async function loginCtrl(req, res) {
 
     jwt.sign(jwtPayload, config.get('jwtSecret'), { expiresIn: '12h' }, (err, token) => {
       if (err) throw err;
-      res.status(200).cookie('token', token, { httpOnly: true, secure: true }).send();
+      res.status(200).cookie('token', token, { httpOnly: true }).send();
     });
   } catch (err) {
     console.error(err);

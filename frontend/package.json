@@ -17,7 +17,7 @@
     "validator": "^13.0.0"
   },
   "scripts": {
-    "start": "HTTPS=true react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -37,5 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://localhost:5000"
+  "proxy": "http://localhost:5000"
 }
