@@ -22,10 +22,24 @@
   display: none;
 }
 
-.side-login {
+.side-home {
   display: flex;
   align-items: center;
   grid-row: 1;
+  grid-column: 2 / span 8;
+  font-size: 20px;
+  border-bottom: 1px solid rgb(146, 146, 146);
+  cursor: pointer;
+}
+
+.side-home:hover {
+  background-color: #eee;
+}
+
+.side-login {
+  display: flex;
+  align-items: center;
+  grid-row: 2;
   grid-column: 2 / span 8;
   font-size: 20px;
   border-bottom: 1px solid rgb(146, 146, 146);
@@ -44,7 +58,7 @@
 .side-signUp {
   display: flex;
   align-items: center;
-  grid-row: 2;
+  grid-row: 3;
   grid-column: 2 / span 8;
   font-size: 20px;
   cursor: pointer;

@@ -1,54 +1,144 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import validator from 'validator';
 
 import './SignUp.css';
+import { signUpValidator } from '../../validators/signUpValidator';
+import { signUp } from '../../actions/auth';
 
-const SignUp = props => {
+const SignUp = ({
+  isAuthenticated,
+  signUp
+}) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  });
+
+  const { firstName, lastName, email, password } = formData;
+
+  const [submitFail, setSubmitFail] = useState(false);
+  const [isFirstNameInvalid, setIsFirstNameInvalid] = useState(false);
+  const [isLastNameInvalid, setIsLastNameInvalid] = useState(false);
+  const [isEmailInvalid, setIsEmailInvalid] = useState(false);
+  const [isPasswordInvalid, setIsPasswordInvalid] = useState(false);
+  const [disableSubmit, setDisableSubmit] = useState(false);
+
+  useEffect(() => {
+    if (submitFail && firstName.trim() !== '') setIsFirstNameInvalid(false);
+    else if (submitFail && firstName.trim() === '') setIsFirstNameInvalid(true);
+  }, [submitFail, firstName]);
+
+  useEffect(() => {
+    if (submitFail && lastName.trim() !== '') setIsLastNameInvalid(false);
+    else if (submitFail && lastName.trim() === '') setIsLastNameInvalid(true);
+  }, [submitFail, lastName]);
+
+  useEffect(() => {
+    if (submitFail && validator.isEmail(email)) setIsEmailInvalid(false);
+    else if (submitFail && !validator.isEmail(email)) setIsEmailInvalid(true);
+  }, [submitFail, email]);
+
+  useEffect(() => {
+    if (submitFail && validator.isLength(password, { min: 4 })) setIsPasswordInvalid(false);
+    else if (submitFail && !validator.isLength(password, { min: 4 })) setIsPasswordInvalid(true);
+  }, [submitFail, password]);
+
+  useEffect(() => {
+    if (submitFail && (isFirstNameInvalid || isLastNameInvalid
+      || isEmailInvalid || isPasswordInvalid)) setDisableSubmit(true);
+    else setDisableSubmit(false);
+  }, [
+    submitFail,
+    isFirstNameInvalid,
+    isLastNameInvalid,
+    isEmailInvalid,
+    isPasswordInvalid
+  ]);
+
+  const handleChange = event => setFormData({
+    ...formData,
+    [event.target.name]: event.target.value
+  })
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    const validationResult = signUpValidator(formData);
+    if (validationResult === 0) signUp(formData);
+    else {
+      setSubmitFail(true);
+      setIsFirstNameInvalid(false);
+      setIsLastNameInvalid(false);
+      setIsEmailInvalid(false);
+      setIsPasswordInvalid(false);
+      validationResult.forEach(errCode => {
+        if (errCode === -1) setIsFirstNameInvalid(true);
+        if (errCode === -2) setIsLastNameInvalid(true);
+        if (errCode === -3) setIsEmailInvalid(true);
+        if (errCode === -4) setIsPasswordInvalid(true);
+      });
+    }
+  };
+
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />
+  }
   return (
     <React.Fragment>
       <div className="container">
         <p className="signup-subtitle">Join TYROS</p>
         <h1 className="signup-title">CREATE YOUR ACCOUNT</h1>
-        <form className="form-signUp">
+        <form className="form-signUp" onSubmit={e => handleSubmit(e)}>
           <div className="form-group group-signUp-firstName">
-            <label className="form-label">First Name</label>
+            <label className={isFirstNameInvalid ? "form-label-error" : "form-label"}>First Name</label>
             <input
               type="text"
-              className="form-field"
+              className={isFirstNameInvalid ? "form-field form-error" : "form-field"}
               name="firstName"
+              value={firstName}
               placeholder="First Name"
+              onChange={e => handleChange(e)}
             />
           </div>
           <div className="form-group group-signUp-lastName">
-            <label className="form-label">Last Name</label>
+            <label className={isLastNameInvalid ? "form-label-error" : "form-label"}>Last Name</label>
             <input
               type="text"
-              className="form-field"
+              className={isLastNameInvalid ? "form-field form-error" : "form-field"}
               name="lastName"
+              value={lastName}
               placeholder="Last Name"
+              onChange={e => handleChange(e)}
             />
           </div>
           <div className="form-group group-signUp-email">
-            <label className="form-label">Email</label>
+            <label className={isEmailInvalid ? "form-label-error" : "form-label"}>Email</label>
             <input
-              type="email"
-              className="form-field"
+              type="text"
+              className={isEmailInvalid ? "form-field form-error" : "form-field"}
               name="email"
+              value={email}
               placeholder="Email"
+              onChange={e => handleChange(e)}
             />
           </div>
           <div className="form-group group-signUp-password">
-            <label className="form-label">Password</label>
+            <label className={isPasswordInvalid ? "form-label-error" : "form-label"}>Password</label>
             <input
               type="password"
-              className="form-field"
+              className={isPasswordInvalid ? "form-field form-error" : "form-field"}
               name="password"
+              value={password}
               placeholder="Password"
+              onChange={e => handleChange(e)}
             />
           </div>
           <div className="form-group group-btn-signUp">
-            <button className="btn btn-signUp">SIGN UP</button>
+            <button type="submit" className="btn btn-signUp" disabled={disableSubmit}>SIGN UP</button>
           </div>
         </form>
         <div className="have-account">
@@ -60,7 +150,12 @@ const SignUp = props => {
 }
 
 SignUp.propTypes = {
-
+  isAuthenticated: PropTypes.bool.isRequired,
+  signUp: PropTypes.func.isRequired
 };
 
-export default SignUp;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { signUp })(SignUp);

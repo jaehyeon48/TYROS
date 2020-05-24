@@ -13,6 +13,11 @@ const Navbar = ({
     setIsSideOpen(!isSideOpen);
   };
 
+  const linkToHome = () => {
+    history.push('/');
+    setIsSideOpen(!isSideOpen);
+  };
+
   const linkToLogin = () => {
     history.push('/login');
     setIsSideOpen(!isSideOpen);
@@ -38,6 +43,9 @@ const Navbar = ({
           {isSideOpen ? (<i className="fas fa-times"></i>) : (<i className="fas fa-bars"></i>)}
         </div>
         <div className={isSideOpen ? "navbar-sideMenu" : "navbar-sideMenu-hidden"}>
+          <div className="side-home" onClick={linkToHome}>
+            <Link to="/">Home</Link>
+          </div>
           <div className="side-login" onClick={linkToLogin}>
             <Link to="/login">Login</Link>
           </div>

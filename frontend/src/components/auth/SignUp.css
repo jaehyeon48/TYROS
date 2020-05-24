@@ -51,6 +51,10 @@
   border-radius: 0.2rem;
 }
 
+.btn-signUp:disabled {
+  opacity: 0.3;
+}
+
 .have-account {
   font-size: 1.2rem;
   color: #fff;

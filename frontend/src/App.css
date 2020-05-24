@@ -121,6 +121,17 @@ body {
   left: 5px;
 }
 
+.form-label-error {
+  position: absolute;
+  color: red;
+  top: -26px;
+  left: 5px;
+}
+
+.form-error {
+  border: 2px solid red;
+}
+
 .btn {
   display: inline-block;
   background: #428a87;
