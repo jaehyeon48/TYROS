@@ -1,14 +1,10 @@
-.navbar-container {
-  position: relative;
-  z-index: 99;
-}
-
 .navbar {
   display: grid;
   grid-template-columns: repeat(30, 1fr);
   position: fixed;
   margin: 0;
   background-color: #24292e;
+  z-index: 99;
 }
 
 .navbar-sideMenu {
