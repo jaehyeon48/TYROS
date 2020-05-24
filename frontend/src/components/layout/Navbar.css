@@ -36,6 +36,11 @@
   background-color: #eee;
 }
 
+.side-home a {
+  color: #27272e;
+  text-decoration: none;
+}
+
 .side-login {
   display: flex;
   align-items: center;
