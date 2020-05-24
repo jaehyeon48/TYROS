@@ -132,6 +132,12 @@ body {
   border: 2px solid red;
 }
 
+.form-error-text {
+  position: relative;
+  left: 4px;
+  color: red;
+}
+
 .btn {
   display: inline-block;
   background: #428a87;

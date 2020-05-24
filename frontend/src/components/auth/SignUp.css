@@ -14,7 +14,7 @@
 .form-signUp {
   display: grid;
   grid-template-columns: repeat(20, 1fr);
-  grid-template-rows: 46px 75px 46px 75px 46px 80px 40px 30px;
+  grid-template-rows: 46px 75px 46px 75px 46px 40px 40px 30px 40px 30px;
   margin: 3rem 10rem 0 0;
 }
 
@@ -41,7 +41,7 @@
 .group-btn-signUp {
   display: flex;
   align-items: center;
-  grid-row: 7;
+  grid-row: 9;
   grid-column: 1 / span 19;
 }
 
@@ -53,6 +53,67 @@
 
 .btn-signUp:disabled {
   opacity: 0.3;
+}
+
+.chkbox-container {
+  grid-row: 7;
+  grid-column: 1 / span 8;
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  color: #d3dbc5;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.chkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+}
+
+.chkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.chkbox-container input:checked ~ .checkmark {
+  background-color: #78a8a4;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.chkbox-container .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .have-account {
@@ -115,7 +176,7 @@
   .form-signUp {
     display: grid;
     grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: 46px 60px 46px 60px 46px 60px 46px 60px 50px 20px;
+    grid-template-rows: 46px 82px 46px 82px 46px 82px 46px 50px 40px 50px 50px 20px;
     margin: 3rem 2rem 0 0;
   }
 
@@ -139,8 +200,13 @@
     grid-column: 1 / span 20;
   }
 
-  .group-btn-signUp {
+  .chkbox-container {
     grid-row: 9;
+    grid-column: 1 / span 20;
+  }
+
+  .group-btn-signUp {
+    grid-row: 11;
     grid-column: 1 / span 20;
   }
 

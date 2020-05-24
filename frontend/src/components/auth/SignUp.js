@@ -84,6 +84,10 @@ const SignUp = ({
     }
   };
 
+  const [showPwd, toggleShowPwd] = useState(false);
+  const handleShowPwd = () => toggleShowPwd(!showPwd)
+
+
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />
   }
@@ -103,6 +107,7 @@ const SignUp = ({
               placeholder="First Name"
               onChange={e => handleChange(e)}
             />
+            {isFirstNameInvalid ? (<small className="form-error-text">First name is invalid.</small>) : null}
           </div>
           <div className="form-group group-signUp-lastName">
             <label className={isLastNameInvalid ? "form-label-error" : "form-label"}>Last Name</label>
@@ -114,6 +119,7 @@ const SignUp = ({
               placeholder="Last Name"
               onChange={e => handleChange(e)}
             />
+            {isLastNameInvalid ? (<small className="form-error-text">Last name is invalid.</small>) : null}
           </div>
           <div className="form-group group-signUp-email">
             <label className={isEmailInvalid ? "form-label-error" : "form-label"}>Email</label>
@@ -125,18 +131,24 @@ const SignUp = ({
               placeholder="Email"
               onChange={e => handleChange(e)}
             />
+            {isEmailInvalid ? (<small className="form-error-text">Email is invalid.</small>) : null}
           </div>
           <div className="form-group group-signUp-password">
             <label className={isPasswordInvalid ? "form-label-error" : "form-label"}>Password</label>
             <input
-              type="password"
+              type={showPwd ? "text" : "password"}
               className={isPasswordInvalid ? "form-field form-error" : "form-field"}
               name="password"
               value={password}
               placeholder="Password"
               onChange={e => handleChange(e)}
             />
+            {isPasswordInvalid ? (<small className="form-error-text">Password is invalid.</small>) : null}
           </div>
+          <label className="chkbox-container">Show password
+            <input type="checkbox" onClick={() => handleShowPwd()} />
+            <span className="checkmark"></span>
+          </label>
           <div className="form-group group-btn-signUp">
             <button type="submit" className="btn btn-signUp" disabled={disableSubmit}>SIGN UP</button>
           </div>
