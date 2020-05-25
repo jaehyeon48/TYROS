@@ -4,6 +4,19 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/UserModel');
 
+// @ROUTE         GET api/auth
+// @DESCRIPTION   check authentication
+// @ACCESS        Private
+async function checkAuthCtrl(req, res) {
+  try {
+    const user = await User.findById(req.user.id, '-password');
+    return res.status(200).json(user);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ msg: 'Internal Server Error' });
+  }
+}
+
 // @ROUTE         POST api/auth
 // @DESCRIPTION   Login user and get token
 // @ACCESS        Public
@@ -29,7 +42,7 @@ async function loginCtrl(req, res) {
 
     jwt.sign(jwtPayload, config.get('jwtSecret'), { expiresIn: '12h' }, (err, token) => {
       if (err) throw err;
-      res.status(200).cookie('token', token, { httpOnly: true }).send();
+      return res.status(200).cookie('token', token, { httpOnly: true }).send();
     });
   } catch (err) {
     console.error(err);
@@ -38,5 +51,6 @@ async function loginCtrl(req, res) {
 }
 
 module.exports = {
+  checkAuthCtrl,
   loginCtrl
 }

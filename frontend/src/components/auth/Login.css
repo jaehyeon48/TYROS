@@ -41,6 +41,10 @@
   border-radius: 0.2rem;
 }
 
+.btn-login:disabled {
+  opacity: 0.3;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .form-login {
     margin: 3rem 8rem 0 0;

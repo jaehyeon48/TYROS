@@ -2,9 +2,26 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
   LOGIN_SUCCESS,
-  LOGIN_FAIL
+  LOGIN_FAIL,
+  USER_LOADED,
+  AUTH_ERROR
 } from './types';
 import axios from 'axios';
+
+export const loadUser = () => async dispatch => {
+  try {
+    const response = await axios.get('/api/auth');
+
+    if (response.status === 200) {
+      dispatch({
+        type: USER_LOADED,
+        payload: response.data
+      });
+    }
+  } catch (err) {
+    dispatch({ type: AUTH_ERROR });
+  }
+};
 
 export const signUp = formData => async dispatch => {
   const config = {
@@ -21,8 +38,30 @@ export const signUp = formData => async dispatch => {
     await axios.post('/api/user', reqBody, config);
 
     dispatch({ type: SIGNUP_SUCCESS });
-
+    dispatch(loadUser());
   } catch (err) {
     console.error(err);
+  }
+};
+
+export const login = formData => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const { email, password } = formData;
+
+  try {
+    const reqBody = JSON.stringify({ email, password });
+
+    await axios.post('/api/auth', reqBody, config);
+
+    dispatch({ type: LOGIN_SUCCESS });
+    dispatch(loadUser());
+  } catch (err) {
+    console.error(err);
+    dispatch({ type: LOGIN_FAIL });
   }
 };
