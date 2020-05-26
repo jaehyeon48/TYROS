@@ -81,6 +81,10 @@ body {
   color: var(--orange-color);
 }
 
+.text-white {
+  color: #fff;
+}
+
 .text-main {
   color: var(--main-color);
 }
@@ -130,6 +134,12 @@ body {
 
 .form-error {
   border: 2px solid red;
+}
+
+.form-text {
+  color: #a0a596;
+  position: relative;
+  left: 2px;
 }
 
 .form-error-text {

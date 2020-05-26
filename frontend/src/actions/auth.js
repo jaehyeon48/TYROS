@@ -40,6 +40,7 @@ export const signUp = formData => async dispatch => {
     dispatch({ type: SIGNUP_SUCCESS });
     dispatch(loadUser());
   } catch (err) {
+    dispatch({ type: SIGNUP_FAIL });
     console.error(err);
   }
 };

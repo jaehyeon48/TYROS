@@ -50,7 +50,7 @@ const Login = ({
 
     const validationResult = loginValidator(formData);
 
-    if (validationResult === 0) console.log(12312345)
+    if (validationResult === 0) login(formData);
     else {
       setSubmitFail(true);
       setIsEmailInvalid(false);
@@ -64,7 +64,7 @@ const Login = ({
 
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />
+    return <Redirect to="/main" />
   }
   return (
     <React.Fragment>
@@ -94,6 +94,7 @@ const Login = ({
               placeholder="Password"
               onChange={e => handleChange(e)}
             />
+            <small className="form-text">Password must be at least 8 characters long. </small>
             {isPasswordInvalid ? (<small className="form-error-text">Password is invalid.</small>) : null}</div>
           <div className="form-group group-btn-login">
             <button className="btn btn-login" disabled={disableSubmit}>LOGIN</button>

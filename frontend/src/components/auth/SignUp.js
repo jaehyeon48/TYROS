@@ -89,7 +89,7 @@ const SignUp = ({
 
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />
+    return <Redirect to="/main" />
   }
   return (
     <React.Fragment>
@@ -143,6 +143,7 @@ const SignUp = ({
               placeholder="Password"
               onChange={e => handleChange(e)}
             />
+            <small className="form-text">Password must be at least 8 characters long. </small>
             {isPasswordInvalid ? (<small className="form-error-text">Password is invalid.</small>) : null}
           </div>
           <label className="chkbox-container">Show password

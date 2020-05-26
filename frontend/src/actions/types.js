@@ -4,3 +4,6 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const CLEAR_STOCKS = 'CLEAR_STOCKS';
+export const STOCKS_LOADED = 'STOCKS_LOADED';
+export const STOCKS_ORGANIZED = 'STOCKS_ORGANIZED';
