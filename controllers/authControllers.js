@@ -50,7 +50,15 @@ async function loginCtrl(req, res) {
   }
 }
 
+// @ROUTE         GET api/auth/logout
+// @DESCRIPTION   logout
+// @ACCESS        Private
+function logOutCtrl(req, res) {
+  res.status(200).cookie('token', '', { maxAge: '-1' }).send();
+}
+
 module.exports = {
   checkAuthCtrl,
-  loginCtrl
+  loginCtrl,
+  logOutCtrl
 }

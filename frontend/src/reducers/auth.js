@@ -3,6 +3,7 @@ import {
   SIGNUP_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
   USER_LOADED,
   AUTH_ERROR
 } from '../actions/types';
@@ -26,6 +27,7 @@ export default (state = initialState, action) => {
     case SIGNUP_FAIL:
     case LOGIN_FAIL:
     case AUTH_ERROR:
+    case LOGOUT:
       return {
         ...state,
         loading: false,

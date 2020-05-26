@@ -6,7 +6,8 @@ const auth = require('../middlewares/auth');
 
 const {
   checkAuthCtrl,
-  loginCtrl
+  loginCtrl,
+  logOutCtrl
 } = require('../controllers/authControllers');
 
 // @ROUTE         GET api/auth
@@ -18,5 +19,10 @@ router.get('/', auth, checkAuthCtrl)
 // @DESCRIPTION   Login user and get token
 // @ACCESS        Public
 router.post('/', loginCtrl);
+
+// @ROUTE         GET api/auth/logout
+// @DESCRIPTION   logout
+// @ACCESS        Private
+router.get('/logout', auth, logOutCtrl);
 
 module.exports = router;

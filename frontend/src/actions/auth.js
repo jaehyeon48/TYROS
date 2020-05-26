@@ -4,6 +4,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   USER_LOADED,
+  LOGOUT,
   AUTH_ERROR
 } from './types';
 import axios from 'axios';
@@ -64,5 +65,14 @@ export const login = formData => async dispatch => {
   } catch (err) {
     console.error(err);
     dispatch({ type: LOGIN_FAIL });
+  }
+};
+
+export const logOut = () => async dispatch => {
+  try {
+    await axios.get('/api/auth/logout');
+    dispatch({ type: LOGOUT });
+  } catch (err) {
+    console.log(err);
   }
 };
