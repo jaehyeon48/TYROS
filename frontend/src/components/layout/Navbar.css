@@ -10,7 +10,7 @@
 .navbar-guest-sideMenu,
 .navbar-auth-sideMenu {
   position: absolute;
-  background-color: rgb(252, 255, 249);
+  background-color: rgb(252, 255, 248);
   right: 0;
   top: 80px;
   height: 150px;
