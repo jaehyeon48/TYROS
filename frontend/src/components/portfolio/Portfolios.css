@@ -59,7 +59,7 @@
   color: #fff;
   grid-column: 2 / span 17;
   align-items: center;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .modal-edit-name {
@@ -85,9 +85,80 @@
   display: none;
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .portfolios-item__name {
+    font-size: 22px;
+    grid-column: 2 / span 15;
+  }
+
+  .portfolios-edit-btn {
+    grid-column: 18 / span 6;
+  }
+
+  .portfolios-delete-btn {
+    grid-column: 25 / span 5;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .portfolios-item__name {
+    font-size: 20px;
+    grid-column: 2 / span 15;
+  }
+
+  .portfolios-item {
+    width: 85vw;
+  }
+
+  .portfolios-edit-btn {
+    font-size: 14px;
+    grid-column: 18 / span 6;
+  }
+
+  .portfolios-delete-btn {
+    font-size: 14px;
+    grid-column: 25 / span 5;
+  }
+}
+
+@media only screen and (min-width: 421px) and (max-width: 575px) {
   .portfolios-item__name {
     font-size: 18px;
-    grid-column: 2 / span 20;
+    grid-column: 2 / span 15;
+  }
+
+  .portfolios-item {
+    width: 92vw;
+  }
+
+  .portfolios-edit-btn {
+    font-size: 12px;
+    grid-column: 18 / span 6;
+  }
+
+  .portfolios-delete-btn {
+    font-size: 12px;
+    grid-column: 25 / span 5;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .portfolios-item {
+    width: 98vw;
+  }
+
+  .portfolios-edit-btn {
+    font-size: 10px;
+    grid-column: 18 / span 6;
+  }
+
+  .portfolios-delete-btn {
+    font-size: 10px;
+    grid-column: 25 / span 5;
+  }
+
+  .portfolios-item__name {
+    font-size: 16px;
+    grid-column: 2 / span 15;
   }
 }

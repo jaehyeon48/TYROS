@@ -68,7 +68,7 @@ async function createNewPortfolio(req, res) {
 // @ACCESS        Private
 async function editPortfolioName(req, res) {
   try {
-    const portfolio = await Portfolio.findOne({ id: req.params.id });
+    const portfolio = await Portfolio.findById(req.params.portfolioId);
 
     if (!portfolio) {
       return res.status(404).json({ msg: 'Cannot find a portfolio!' });
