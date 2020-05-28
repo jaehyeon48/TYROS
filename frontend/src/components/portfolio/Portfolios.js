@@ -16,6 +16,7 @@ const Portfolios = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [portfolioId, setPortfolioId] = useState('');
   const [newPortfolioName, setNewPortfolioName] = useState('');
+  const [isFormError, setIsFormError] = useState(false);
 
   useEffect(() => {
     loadPortfolios();
@@ -24,9 +25,12 @@ const Portfolios = ({
   const handleSubmit = event => {
     event.preventDefault();
 
-    editPortfolioName(portfolioId, newPortfolioName);
-    setIsModalOpen(false);
-    setNewPortfolioName('');
+    if (newPortfolioName.trim() === '') return setIsFormError(true);
+    else {
+      editPortfolioName(portfolioId, newPortfolioName.trim());
+      setIsModalOpen(false);
+      setNewPortfolioName('');
+    }
   };
 
   const handleChange = event => setNewPortfolioName(event.target.value)
@@ -55,15 +59,16 @@ const Portfolios = ({
             <i className="fas fa-times" onClick={closeEditModal}></i>
             <form onSubmit={e => handleSubmit(e)}>
               <div className="form-group">
-                <label className="form-label">New Portfolio Name</label>
+                <label className={isFormError ? "form-label-error" : "form-label"}>New Portfolio Name</label>
                 <input
-                  className="form-field"
+                  className={isFormError ? "form-field form-error" : "form-field"}
                   type="text"
                   name="newPortfolioName"
                   value={newPortfolioName}
                   placeholder="Input new portfolio name"
                   onChange={e => handleChange(e)}
                 />
+                {isFormError ? (<small className="form-error-text">Please input new portfolio name.</small>) : null}
                 <button type="submit" className="btn portfolio-edit-name-btn">EDIT</button>
               </div>
             </form>
