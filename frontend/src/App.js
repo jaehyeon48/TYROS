@@ -10,6 +10,7 @@ import LandingPage from './components/layout/LandingPage';
 import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
 import MainPage from './components/mainpage/MainPage';
+import Portfolios from './components/portfolio/Portfolios';
 import { loadUser } from './actions/auth';
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/signup" component={SignUp} exact />
               <Route path="/login" component={Login} exact />
               <PrivateRoute path="/main" component={MainPage} exact />
+              <PrivateRoute path="/portfolios" component={Portfolios} exact />
             </div>
           </React.Fragment>
         </Switch>

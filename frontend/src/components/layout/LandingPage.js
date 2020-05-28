@@ -1,9 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './LandingPage.css';
 
-const LandingPage = props => {
+const LandingPage = ({
+  isAuthenticated
+}) => {
+  if (isAuthenticated) {
+    return <Redirect to="/main" />
+  }
+
   return (
     <div className="main-container landing-back-color">
       <header className="landing-header">
@@ -26,7 +34,11 @@ const LandingPage = props => {
 }
 
 LandingPage.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired
+};
 
-}
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
 
-export default LandingPage
+export default connect(mapStateToProps)(LandingPage);

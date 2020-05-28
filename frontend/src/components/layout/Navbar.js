@@ -33,6 +33,16 @@ const Navbar = ({
     setIsSideOpen(!isSideOpen);
   };
 
+  const linkToProfile = () => {
+    history.push('/profile');
+    setIsSideOpen(!isSideOpen);
+  }
+
+  const linkToPortfolios = () => {
+    history.push('/portfolios');
+    setIsSideOpen(!isSideOpen);
+  }
+
   const handleLogOut = () => {
     if (isSideOpen) setIsSideOpen(!isSideOpen);
     logOut();
@@ -64,8 +74,8 @@ const Navbar = ({
   const auth = (
     <React.Fragment>
       <div className="navbar-auth-links">
-        <Link to="#" className="navbar-profile">My Profile</Link>
-        <Link to="#" className="navbar-portfolios">Portfolios</Link>
+        <Link to="/profile" className="navbar-profile">My Profile</Link>
+        <Link to="/portfolios" className="navbar-portfolios">Portfolios</Link>
         <span className="navbar-editPosition">Edit Position</span>
         <span className="navbar-editCash">Edit Cash</span>
         <span className="navbar-logout" onClick={handleLogOut}>LogOut</span>
@@ -74,11 +84,11 @@ const Navbar = ({
         {isSideOpen ? (<i className="fas fa-times"></i>) : (<i className="fas fa-bars"></i>)}
       </div>
       <div className={isSideOpen ? "navbar-auth-sideMenu" : "navbar-sideMenu-hidden"}>
-        <div className="side-profile" onClick={linkToHome}>
-          <Link to="#">My Profile</Link>
+        <div className="side-profile" onClick={linkToProfile}>
+          <Link to="/profile">My Profile</Link>
         </div>
-        <div className="side-portfolios" onClick={linkToLogin}>
-          <Link to="#">Portfolios</Link>
+        <div className="side-portfolios" onClick={linkToPortfolios}>
+          <Link to="/portfolios">Portfolios</Link>
         </div>
         <div className="side-editPosition" onClick={linkToSignUp}>
           <span>Edit Position</span>

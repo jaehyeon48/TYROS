@@ -5,6 +5,7 @@ const router = express.Router();
 const auth = require('../middlewares/auth');
 const {
   getAllShares,
+  getSharesOfPortfolio,
   createNewPosition
 } = require('../controllers/stockControllers');
 
@@ -12,7 +13,12 @@ const {
 // @ROUTE         GET api/stock
 // @DESCRIPTION   Load all shares of the user
 // @ACCESS        Private
-router.get('/', auth, getAllShares)
+router.get('/', auth, getAllShares);
+
+// @ROUTE         GET api/stock/:portfolioId
+// @DESCRIPTION   Load all shares of the user
+// @ACCESS        Private
+router.get('/:portfolioId', auth, getSharesOfPortfolio);
 
 // @ROUTE         POST api/stock
 // @DESCRIPTION   Create a new position

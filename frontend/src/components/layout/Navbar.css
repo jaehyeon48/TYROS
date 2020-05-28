@@ -296,5 +296,9 @@
     .navbar-guest-bars {
       grid-column: 21 / span 2;
     }
+
+    .navbar-auth-bars {
+      grid-column: 21 / span 2;
+    }
   }
 }

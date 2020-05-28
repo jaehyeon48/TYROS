@@ -78,3 +78,19 @@ export const loadAllShares = () => async dispatch => {
     console.error(err);
   }
 };
+
+export const loadSharesOfPortfolio = portfolioId => async dispatch => {
+  try {
+    const response = await axios.get(`/api/stock/${portfolioId}`);
+    const classifiedShares = classifyStocks(response.data);
+    dispatch({
+      type: CLEAR_STOCKS
+    });
+    dispatch({
+      type: STOCKS_LOADED,
+      payload: classifiedShares
+    })
+  } catch (err) {
+    console.error(err);
+  }
+};
