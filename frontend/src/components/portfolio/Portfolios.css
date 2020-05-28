@@ -13,6 +13,7 @@
   max-width: 900px;
   height: 55px;
   display: grid;
+  align-items: center;
   grid-template-columns: repeat(30, 1fr);
   background-color: #263041;
   margin: 1rem;
@@ -20,16 +21,68 @@
   transition: background-color 0.2s ease;
 }
 
-.portfolios-item:hover {
-  background-color: #13223b;
+.portfolios-edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  color: #fff;
+  grid-row: 1;
+  grid-column: 20 / span 5;
+  background-color: var(--orange-color);
+  transition: opacity 0.2s ease;
+}
+
+.portfolios-edit-btn:hover {
+  opacity: 0.7;
+}
+
+.portfolios-delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  color: #fff;
+  grid-row: 1;
+  grid-column: 26 / span 4;
+  background-color: var(--danger-color);
+  transition: opacity 0.2s ease;
+}
+
+.portfolios-delete-btn:hover {
+  opacity: 0.7;
 }
 
 .portfolios-item__name {
+  grid-row: 1;
   display: flex;
   color: #fff;
   grid-column: 2 / span 17;
   align-items: center;
   font-size: 22px;
+}
+
+.modal-edit-name {
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40vw; /* Could be more or less, depending on screen size */
+}
+
+.modal-hidden {
+  display: none;
 }
 
 @media only screen and (max-width: 420px) {

@@ -53,7 +53,6 @@ export const organizeShare = (ticker, shareInfo) => async dispatch => {
     }
   });
 
-
   share.avgCost = (totalQty <= 0 ? 0 : (totalCost / totalQty).toFixed(2));
   share.quantity = (totalQty <= 0 ? 0 : totalQty);
 

@@ -18,6 +18,25 @@ async function getAllPortfolios(req, res) {
   }
 }
 
+// @ROUTE         GET api/portfolio/:portfolioId
+// @DESCRIPTION   Get portfolio by its id
+// @ACCESS        Private
+async function getPortfolioById(req, res) {
+  try {
+    const portfolio = await Portfolio.findOne({ id: req.params.id });
+
+    if (!portfolio) {
+      return res.status(404).json({ msg: 'Cannot find a portfolio!' });
+    }
+
+    return res.json(portfolio);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ msg: 'Internal Server Error' });
+  }
+}
+
+
 // @ROUTE         POST api/portfolio
 // @DESCRIPTION   Create a new portfolio
 // @ACCESS        Private
@@ -44,7 +63,30 @@ async function createNewPortfolio(req, res) {
   }
 }
 
+// @ROUTE         PATCH api/portfolio/:portfolioId
+// @DESCRIPTION   Edit portfolio name
+// @ACCESS        Private
+async function editPortfolioName(req, res) {
+  try {
+    const portfolio = await Portfolio.findOne({ id: req.params.id });
+
+    if (!portfolio) {
+      return res.status(404).json({ msg: 'Cannot find a portfolio!' });
+    }
+
+    portfolio.name = req.body.name;
+
+    await portfolio.save();
+
+    return res.json(portfolio);
+  } catch (error) {
+
+  }
+}
+
 module.exports = {
   getAllPortfolios,
-  createNewPortfolio
+  getPortfolioById,
+  createNewPortfolio,
+  editPortfolioName
 };

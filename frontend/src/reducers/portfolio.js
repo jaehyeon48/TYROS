@@ -1,4 +1,5 @@
 import {
+  PORTFOLIO_LOADED,
   PORTFOLIOS_LOADED,
   SELECT_PORTFOLIO
 } from '../actions/types';
@@ -13,6 +14,11 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case PORTFOLIO_LOADED:
+      return {
+        ...state,
+        portfolio: payload
+      };
     case PORTFOLIOS_LOADED:
       return {
         ...state,
