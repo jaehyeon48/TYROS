@@ -27,7 +27,6 @@ const Portfolios = ({
     editPortfolioName(portfolioId, newPortfolioName);
     setIsModalOpen(false);
     setNewPortfolioName('');
-    setPortfolioId('');
   };
 
   const handleChange = event => setNewPortfolioName(event.target.value)
@@ -36,6 +35,8 @@ const Portfolios = ({
     setIsModalOpen(true);
     setPortfolioId(id);
   }
+
+  const closeEditModal = () => setIsModalOpen(false)
 
   return (
     <React.Fragment>
@@ -51,6 +52,7 @@ const Portfolios = ({
       {isModalOpen ? (
         <div className="modal-edit-name" >
           <div className="modal-content">
+            <i className="fas fa-times" onClick={closeEditModal}></i>
             <form onSubmit={e => handleSubmit(e)}>
               <div className="form-group">
                 <label className="form-label">New Portfolio Name</label>
@@ -62,8 +64,8 @@ const Portfolios = ({
                   placeholder="Input new portfolio name"
                   onChange={e => handleChange(e)}
                 />
+                <button type="submit" className="btn portfolio-edit-name-btn">EDIT</button>
               </div>
-              <button type="submit">EDIT</button>
             </form>
           </div>
         </div>
