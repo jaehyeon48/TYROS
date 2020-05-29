@@ -7,6 +7,8 @@ import {
   organizeShare
 } from '../../actions/stock';
 import StockItem from './StockItem';
+import StockModal from './StockModal';
+import CashModal from './CashModal';
 import './MainPage.css';
 import {
   loadPortfolios,
@@ -28,6 +30,9 @@ const MainPage = ({
     currentPortfolio
   }
 }) => {
+  const [isEditStockModalOpen, setIsEditStockModalOpen] = useState(false);
+  const [isEditCashModalOpen, setIsEditCashModalOpen] = useState(false);
+
   useEffect(() => {
     loadPortfolios();
   }, []);
@@ -53,25 +58,37 @@ const MainPage = ({
 
   return (
     <React.Fragment>
-      {portfolios && portfolios.length > 0 && (
-        <div className="dropdown-select" onChange={e => handleDropdown(e)}>
-          <select value={currentPortfolio !== null && currentPortfolio} readOnly>
-            {portfolios.map(portfolio => (
-              <option
-                value={portfolio._id}
-                key={portfolio._id}
-              >{portfolio.name}</option>
-            ))}
-          </select>
+      <div className="portfolio-actions-container">
+        {portfolios && portfolios.length > 0 && (
+          <div className="dropdown-select" onChange={e => handleDropdown(e)}>
+            <select value={currentPortfolio !== null && currentPortfolio} readOnly>
+              {portfolios.map(portfolio => (
+                <option
+                  value={portfolio._id}
+                  key={portfolio._id}
+                >{portfolio.name}</option>
+              ))}
+            </select>
+          </div>
+        )}
+        <div className="action-edit-positions">
+          <span className="edit-position">Edit Position</span>
+          <span className="edit-cash">Edit Cash</span>
         </div>
-      )}
+      </div>
       <div className="stock-container">
+        {portfolios.length === 0 ? (
+          <p className="stock-not-exist-msg">Please Create Your Portfolio first!</p>
+        ) : null}
         {organizedStocks.length > 0 ? organizedStocks.map((share, index) => (
           <StockItem stock={share} key={index} />
-        )) : (
-            <p className="stock-not-exist-msg">Please Create Your Portfolio first!</p>
-          )}
+        )) : null}
+        {portfolios.length > 0 && organizedStocks.length === 0 && (
+          <p className="stock-not-exist-msg">Please Add Your Position first!</p>
+        )}
       </div>
+      {isEditStockModalOpen && <StockModal />}
+      {isEditCashModalOpen && <CashModal />}
     </React.Fragment>
   );
 };

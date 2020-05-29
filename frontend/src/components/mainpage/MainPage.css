@@ -81,6 +81,38 @@ select {
   font-size: 20px;
 }
 
+.portfolio-actions-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 4rem 1rem;
+}
+
+.action-edit-positions {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid #2c3e50;
+  border-radius: 0.4rem;
+  background-color: #2c3e50;
+  font-size: 1.2rem;
+  width: 305px;
+}
+
+.edit-position {
+  color: #fff;
+  cursor: pointer;
+}
+
+.edit-cash {
+  color: #fff;
+  cursor: pointer;
+}
+
+.edit-position:hover,
+.edit-cash:hover {
+  color: var(--warning-color);
+}
+
 .dropdown-select {
   position: relative;
   display: flex;
@@ -117,6 +149,23 @@ select {
     margin: 2.2rem;
     font-size: 20px;
   }
+
+  .action-edit-positions {
+    width: 280px;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .portfolio-actions-container {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .action-edit-positions {
+    margin-top: 1rem;
+    width: 320px;
+    height: 50px;
+  }
 }
 
 @media only screen and (max-width: 420px) {
@@ -128,5 +177,18 @@ select {
     width: 200px;
     height: 280px;
     margin: 1.7rem;
+  }
+
+  .portfolio-actions-container {
+    margin: 3rem 0.6rem;
+  }
+
+  .dropdown-select {
+    width: 270px;
+  }
+
+  .action-edit-positions {
+    width: 270px;
+    font-size: 1rem;
   }
 }

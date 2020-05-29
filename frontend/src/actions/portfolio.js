@@ -40,6 +40,21 @@ export const selectPortfolio = id => async dispatch => {
   });
 }
 
+export const createPortfolio = name => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  try {
+    await axios.post('/api/portfolio', JSON.stringify({ name }), config);
+    dispatch(loadPortfolios());
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 export const editPortfolioName = (id, name) => async dispatch => {
   const config = {
     headers: {
@@ -53,6 +68,15 @@ export const editPortfolioName = (id, name) => async dispatch => {
     //   type: PORTFOLIO_EDITED,
     //   payload: response.data
     // });
+    dispatch(loadPortfolios());
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const deletePortfolio = id => async dispatch => {
+  try {
+    await axios.delete(`/api/portfolio/${id}`);
     dispatch(loadPortfolios());
   } catch (err) {
     console.error(err);

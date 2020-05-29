@@ -74,27 +74,23 @@ const Navbar = ({
   const auth = (
     <React.Fragment>
       <div className="navbar-auth-links">
+        <Link to="/main" className="navbar-home">Home</Link>
         <Link to="/profile" className="navbar-profile">My Profile</Link>
         <Link to="/portfolios" className="navbar-portfolios">Portfolios</Link>
-        <span className="navbar-editPosition">Edit Position</span>
-        <span className="navbar-editCash">Edit Cash</span>
         <span className="navbar-logout" onClick={handleLogOut}>LogOut</span>
       </div>
       <div className="navbar-auth-bars" onClick={handleSideMenu}>
         {isSideOpen ? (<i className="fas fa-times"></i>) : (<i className="fas fa-bars"></i>)}
       </div>
       <div className={isSideOpen ? "navbar-auth-sideMenu" : "navbar-sideMenu-hidden"}>
+        <div className="side-home" onClick={linkToHome}>
+          <Link to="/main">Home</Link>
+        </div>
         <div className="side-profile" onClick={linkToProfile}>
           <Link to="/profile">My Profile</Link>
         </div>
         <div className="side-portfolios" onClick={linkToPortfolios}>
           <Link to="/portfolios">Portfolios</Link>
-        </div>
-        <div className="side-editPosition" onClick={linkToSignUp}>
-          <span>Edit Position</span>
-        </div>
-        <div className="side-editCash" onClick={linkToSignUp}>
-          <span>Edit Cash</span>
         </div>
         <div className="side-logout" onClick={handleLogOut}>
           <span>LogOut</span>

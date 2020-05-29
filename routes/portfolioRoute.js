@@ -7,7 +7,8 @@ const {
   getAllPortfolios,
   getPortfolioById,
   createNewPortfolio,
-  editPortfolioName
+  editPortfolioName,
+  deletePortfolio
 } = require('../controllers/portfolioController');
 
 // @ROUTE         GET api/portfolio
@@ -29,5 +30,10 @@ router.post('/', auth, createNewPortfolio);
 // @DESCRIPTION   Edit portfolio name
 // @ACCESS        Private
 router.patch('/:portfolioId', auth, editPortfolioName);
+
+// @ROUTE         DELETE api/portfolio/:portfolioId
+// @DESCRIPTION   delete portfolio and its stocks
+// @ACCESS        Private
+router.delete('/:portfolioId', auth, deletePortfolio);
 
 module.exports = router;

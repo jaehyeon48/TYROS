@@ -1,4 +1,5 @@
 const Portfolio = require('../models/PortfolioModel');
+const Stock = require('../models/StockModel');
 
 // @ROUTE         GET api/portfolio
 // @DESCRIPTION   Load all portfolios
@@ -6,10 +7,6 @@ const Portfolio = require('../models/PortfolioModel');
 async function getAllPortfolios(req, res) {
   try {
     const portfolios = await Portfolio.find({ user: req.user.id });
-
-    if (portfolios.length === 0) {
-      return res.status(404).json({ msg: 'Portfolio does not exist!' });
-    }
 
     res.json(portfolios);
   } catch (err) {
@@ -80,7 +77,22 @@ async function editPortfolioName(req, res) {
 
     return res.json(portfolio);
   } catch (error) {
+    console.error(err);
+    return res.status(500).json({ msg: 'Internal Server Error' });
+  }
+}
 
+// @ROUTE         DELETE api/portfolio/:portfolioId
+// @DESCRIPTION   delete portfolio and its stocks
+// @ACCESS        Private
+async function deletePortfolio(req, res) {
+  try {
+    const portfolio = await Portfolio.findByIdAndDelete(req.params.portfolioId);
+    await Stock.deleteMany({ portfolio: portfolio._id });
+    return res.json(portfolio);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ msg: 'Internal Server Error' });
   }
 }
 
@@ -88,5 +100,6 @@ module.exports = {
   getAllPortfolios,
   getPortfolioById,
   createNewPortfolio,
-  editPortfolioName
+  editPortfolioName,
+  deletePortfolio
 };

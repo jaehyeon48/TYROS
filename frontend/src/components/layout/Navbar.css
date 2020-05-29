@@ -27,8 +27,7 @@
   display: none;
 }
 
-.side-home,
-.side-profile {
+.side-home {
   display: flex;
   align-items: center;
   grid-row: 1;
@@ -50,7 +49,7 @@
 }
 
 .side-login,
-.side-portfolios {
+.side-profile {
   display: flex;
   align-items: center;
   grid-row: 2;
@@ -72,7 +71,7 @@
 }
 
 .side-signUp,
-.side-editPosition {
+.side-portfolios {
   display: flex;
   align-items: center;
   grid-row: 3;
@@ -81,46 +80,24 @@
   cursor: pointer;
 }
 
-.side-editPosition {
-  border-bottom: 1px solid rgb(146, 146, 146);
-}
-
-.side-signUp:hover,
-.side-editPosition:hover {
+.side-signUp:hover {
   background-color: #eee;
 }
 
-.side-signUp a,
-.side-editPosition span {
+.side-signUp a {
   color: #27272e;
   text-decoration: none;
   cursor: pointer;
 }
 
-.side-editCash {
-  display: flex;
-  align-items: center;
-  grid-row: 4;
-  grid-column: 2 / span 8;
+.side-portfolios {
   border-bottom: 1px solid rgb(146, 146, 146);
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.side-editCash:hover {
-  background-color: #eee;
-}
-
-.side-editCash span {
-  color: #27272e;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .side-logout {
   display: flex;
   align-items: center;
-  grid-row: 5;
+  grid-row: 4;
   grid-column: 2 / span 8;
   font-size: 20px;
   cursor: pointer;
@@ -187,43 +164,35 @@
   align-items: center;
   grid-column: 19 / span 12;
   font-size: 1.2rem;
-  grid-template-columns: 100px 20px 100px 20px 122px 20px 100px 20px 75px;
+  grid-template-columns: 60px 20px 100px 20px 100px 20px 100px 20px;
 }
 
-.navbar-profile {
+.navbar-home {
   grid-column: 1 / span 1;
   color: #fff;
   text-decoration: none;
 }
 
-.navbar-portfolios {
+.navbar-profile {
   grid-column: 3 / span 1;
   color: #fff;
   text-decoration: none;
 }
 
-.navbar-editPosition {
+.navbar-portfolios {
   grid-column: 5 / span 1;
   color: #fff;
-  cursor: pointer;
-}
-
-.navbar-editCash {
-  grid-column: 7 / span 1;
-  color: #fff;
-  cursor: pointer;
+  text-decoration: none;
 }
 
 .navbar-logout {
-  grid-column: 9 / span 1;
+  grid-column: 7 / span 1;
   color: #fff;
   cursor: pointer;
 }
 
 .navbar-profile:hover,
 .navbar-portfolios:hover,
-.navbar-editPosition:hover,
-.navbar-editCash:hover,
 .navbar-logout:hover {
   color: #78a8a4;
 }
@@ -237,27 +206,9 @@
   cursor: pointer;
 }
 
-@media only screen and (min-width: 1404px) and (max-width: 1608px) {
-  .navbar-auth-links {
-    grid-column: 17 / span 13;
-  }
-}
-
-@media only screen and (min-width: 1255px) and (max-width: 1403px) {
-  .navbar-auth-links {
-    grid-column: 15 / span 15;
-  }
-}
-
-@media only screen and (min-width: 1182px) and (max-width: 1254px) {
-  .navbar-auth-links {
-    grid-column: 13 / span 17;
-  }
-}
-
 @media only screen and (min-width: 1024px) and (max-width: 1181px) {
   .navbar-auth-links {
-    grid-column: 10 / span 20;
+    grid-column: 16 / span 14;
   }
 }
 

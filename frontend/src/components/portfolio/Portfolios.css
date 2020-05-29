@@ -65,6 +65,7 @@
   overflow: hidden;
 }
 
+.modal-create-portfolio,
 .modal-edit-name {
   position: fixed;
   z-index: 99;
