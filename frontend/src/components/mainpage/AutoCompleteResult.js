@@ -1,0 +1,43 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+
+import './AutoCompleteResult.css';
+
+const AutoCompleteResult = ({
+  results,
+  userInput
+}) => {
+  return (
+    <React.Fragment>
+      {results.slice(0, 5).map(result => (
+        <div key={result.ticker}>
+          <div>
+            {result.ticker.slice(0, userInput.length).toUpperCase() === userInput.toUpperCase() ?
+              <React.Fragment>
+                <span className="match-words">{result.ticker.slice(0, userInput.length)}</span>
+                <span>{result.ticker.slice(userInput.length)}</span>
+              </React.Fragment> : (
+                <span>{result.ticker}</span>
+              )}
+          </div>
+          <div>
+            {result.name.slice(0, userInput.length).toUpperCase() === userInput.toUpperCase() ?
+              <React.Fragment>
+                <span className="match-words">{result.name.slice(0, userInput.length)}</span>
+                <span>{result.name.slice(userInput.length)}</span>
+              </React.Fragment> : (
+                <span>{result.name}</span>
+              )}
+          </div>
+          <div>{result.exchange}</div>
+        </div>
+      ))}
+    </React.Fragment>
+  )
+}
+
+AutoCompleteResult.propTypes = {
+
+}
+
+export default AutoCompleteResult

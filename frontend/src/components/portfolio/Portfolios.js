@@ -63,6 +63,10 @@ const Portfolios = ({
     setPortfolioId(id);
   };
 
+  const handleDeletePortfolio = id => {
+    if (window.confirm('You really want to delete the portfolio?')) deletePortfolio(id);
+  }
+
   const closeCreateModal = () => setIsCreateModalOpen(false)
   const closeEditModal = () => setIsEditModalOpen(false)
 
@@ -76,7 +80,7 @@ const Portfolios = ({
           <div className="portfolios-item" key={portfolio._id}>
             <div className="portfolios-item__name">{portfolio.name}</div>
             <div className="portfolios-edit-btn" onClick={() => openEditNameModal(portfolio._id)}>EDIT NAME</div>
-            <div className="portfolios-delete-btn" onClick={() => deletePortfolio(portfolio._id)}>DELETE</div>
+            <div className="portfolios-delete-btn" onClick={() => handleDeletePortfolio(portfolio._id)}>DELETE</div>
           </div>
         ))}
       </div>

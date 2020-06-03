@@ -77,7 +77,7 @@ const Navbar = ({
         <Link to="/main" className="navbar-home">Home</Link>
         <Link to="/profile" className="navbar-profile">My Profile</Link>
         <Link to="/portfolios" className="navbar-portfolios">Portfolios</Link>
-        <span className="navbar-logout" onClick={handleLogOut}>LogOut</span>
+        <span className="navbar-logout" onClick={handleLogOut}>Log out</span>
       </div>
       <div className="navbar-auth-bars" onClick={handleSideMenu}>
         {isSideOpen ? (<i className="fas fa-times"></i>) : (<i className="fas fa-bars"></i>)}
@@ -93,7 +93,7 @@ const Navbar = ({
           <Link to="/portfolios">Portfolios</Link>
         </div>
         <div className="side-logout" onClick={handleLogOut}>
-          <span>LogOut</span>
+          <span>Log out</span>
         </div>
       </div>
     </React.Fragment>

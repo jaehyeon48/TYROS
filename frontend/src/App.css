@@ -106,6 +106,10 @@ a {
   margin-bottom: 3rem;
 }
 
+input {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .form-group {
   position: relative;
 }
@@ -116,7 +120,7 @@ a {
   border: 1px solid #d3dbc5;
   border-radius: 1.1rem;
   background-color: #e8f0fe;
-  padding: 0.6rem;
+  padding: 0.8rem;
   color: #343a40;
   font-size: 1.3rem;
   font-weight: 500;

@@ -56,6 +56,9 @@ const MainPage = ({
     selectPortfolio(event.target.value);
   };
 
+  const openEditPositionModal = () => setIsEditStockModalOpen(true);
+  const openEditCashModal = () => setIsEditCashModalOpen(true);
+
   return (
     <React.Fragment>
       <div className="portfolio-actions-container">
@@ -72,8 +75,8 @@ const MainPage = ({
           </div>
         )}
         <div className="action-edit-positions">
-          <span className="edit-position">Edit Position</span>
-          <span className="edit-cash">Edit Cash</span>
+          <span className="edit-position" onClick={() => openEditPositionModal()}>Edit Position</span>
+          <span className="edit-cash" onClick={() => openEditCashModal()}>Edit Cash</span>
         </div>
       </div>
       <div className="stock-container">

@@ -121,7 +121,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  grid-column: 22 / span 6;
+  grid-column: 23 / span 5;
   font-size: 1.2rem;
 }
 
@@ -207,6 +207,9 @@
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1181px) {
+  .navbar-guest-links {
+    grid-column: 22 / span 6;
+  }
   .navbar-auth-links {
     grid-column: 16 / span 14;
   }
