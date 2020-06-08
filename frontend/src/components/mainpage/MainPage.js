@@ -57,7 +57,9 @@ const MainPage = ({
   };
 
   const openEditPositionModal = () => setIsEditStockModalOpen(true);
+  const closeEditPositionModal = () => setIsEditStockModalOpen(false);
   const openEditCashModal = () => setIsEditCashModalOpen(true);
+  const closeEditCashModal = () => setIsEditCashModalOpen(false);
 
   return (
     <React.Fragment>
@@ -90,8 +92,8 @@ const MainPage = ({
           <p className="stock-not-exist-msg">Please Add Your Position first!</p>
         )}
       </div>
-      {isEditStockModalOpen && <StockModal />}
-      {isEditCashModalOpen && <CashModal />}
+      {isEditStockModalOpen && <StockModal closeModal={closeEditPositionModal} />}
+      {isEditCashModalOpen && <CashModal closeModal={closeEditCashModal} />}
     </React.Fragment>
   );
 };

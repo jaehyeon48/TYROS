@@ -19,3 +19,116 @@
   border: 1px solid #888;
   width: 45vw; /* Could be more or less, depending on screen size */
 }
+
+.auto-complete-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-price,
+.form-quantity {
+  margin: 2.5rem 0;
+}
+
+.form-radio {
+  margin: 1rem 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #fff;
+  position: relative;
+  right: 12px;
+}
+
+.form-radio__buy,
+.form-radio__sell {
+  position: relative;
+}
+
+.radio-label--buy,
+.radio-label--sell {
+  position: absolute;
+  left: 16px;
+}
+
+.btn-edit-position {
+  margin: 2.5rem 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-edit-position button {
+  border: none;
+  background-color: #065675;
+  width: 400px;
+  font-size: 1.2rem;
+  color: #fff;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.btn-edit-position button:hover {
+  background-color: #0b729b;
+}
+
+.btn-edit-position button:disabled {
+  opacity: 0.3;
+  background-color: #065675;
+}
+
+.position-modal-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  background-color: #333745;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 60px 30px;
+  border: 1px solid #888;
+  width: 45vw; /* Could be more or less, depending on screen size */
+}
+
+.position-modal-content .fa-times {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.position-modal-content .fa-times:hover {
+  opacity: 0.7;
+}
+
+.position-modal-content form {
+  grid-row: 1;
+  grid-column: 2 / span 28;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .position-modal-content {
+    width: 63vw;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .position-modal-content {
+    width: 73vw;
+  }
+}
+
+@media only screen and (min-width: 421px) and (max-width: 575px) {
+  .position-modal-content {
+    width: 82vw;
+    padding: 62px 26px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .position-modal-content {
+    width: 92vw;
+    padding: 64px 20px;
+  }
+}

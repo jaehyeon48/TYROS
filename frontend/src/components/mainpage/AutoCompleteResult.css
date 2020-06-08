@@ -1,3 +1,21 @@
 .match-words {
-  color: blue;
+  color: dodgerblue;
+}
+
+.auto-complete-item {
+  background-color: inherit;
+  color: #fff;
+  border: 1px solid #40475e;
+  margin: 0.2rem 0;
+  width: 98%;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.auto-complete-item:hover {
+  background-color: #40475e;
+}
+
+.auto-complete-item__exchange {
+  font-size: 14px;
 }

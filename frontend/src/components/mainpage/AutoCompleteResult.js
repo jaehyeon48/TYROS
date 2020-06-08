@@ -5,12 +5,17 @@ import './AutoCompleteResult.css';
 
 const AutoCompleteResult = ({
   results,
-  userInput
+  userInput,
+  handleClickItem
 }) => {
   return (
     <React.Fragment>
       {results.slice(0, 5).map(result => (
-        <div key={result.ticker}>
+        <div
+          key={result.ticker}
+          className="auto-complete-item"
+          onClick={() => handleClickItem(result.ticker)}
+        >
           <div>
             {result.ticker.slice(0, userInput.length).toUpperCase() === userInput.toUpperCase() ?
               <React.Fragment>
@@ -29,7 +34,7 @@ const AutoCompleteResult = ({
                 <span>{result.name}</span>
               )}
           </div>
-          <div>{result.exchange}</div>
+          <div className="auto-complete-item__exchange">{result.exchange}</div>
         </div>
       ))}
     </React.Fragment>

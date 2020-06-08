@@ -1,6 +1,6 @@
 import { stockList } from './stockList';
 
-export default function autoCompleteTestFunc(ticker) {
+export default function stockNameAutoComplete(ticker) {
   const tickerLength = ticker.length;
 
   /* Search By Company Name */
@@ -19,6 +19,7 @@ export default function autoCompleteTestFunc(ticker) {
     }
   });
 
+  // remove duplicates
   const result = [...matchedStocksByTicker, ...matchedStocksByName];
   return result.filter((stock, index) => result.indexOf(stock) === index);
 }
