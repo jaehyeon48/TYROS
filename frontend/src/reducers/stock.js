@@ -1,7 +1,8 @@
 import {
   STOCKS_LOADED,
   STOCKS_ORGANIZED,
-  CLEAR_STOCKS
+  CLEAR_STOCKS,
+  EDIT_POSITION_SUCCESS
 } from '../actions/types';
 
 const initialState = {
@@ -31,6 +32,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         organizedStocks: [...state.organizedStocks, payload],
+        loading: false
+      }
+    case EDIT_POSITION_SUCCESS:
+      return {
+        ...state,
         loading: false
       }
     default:

@@ -5,9 +5,11 @@ import PropTypes from 'prop-types';
 import './StockModal.css';
 import stockNameAutoComplete from '../../utils/autoComplete';
 import AutoCompleteResult from './AutoCompleteResult';
+import { editPosition } from '../../actions/stock';
 
 const StockModal = ({
   currentPortfolio,
+  editPosition,
   closeModal
 }) => {
   const [formData, setFormData] = useState({
@@ -102,8 +104,9 @@ const StockModal = ({
     const isValidForm = checkFormValidation();
 
     if (isValidForm) {
-      console.log(formData) // replace this console.log to 'edit position action'
+      editPosition(formData, currentPortfolio);
       setSubmitFail(false);
+      window.location.reload();
     }
     else setSubmitFail(true);
   }
@@ -206,11 +209,12 @@ const StockModal = ({
 };
 
 StockModal.propTypes = {
-  currentPortfolio: PropTypes.string.isRequired
+  currentPortfolio: PropTypes.string.isRequired,
+  editPosition: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   currentPortfolio: state.portfolio.currentPortfolio
 });
 
-export default connect(mapStateToProps, {})(StockModal);
+export default connect(mapStateToProps, { editPosition })(StockModal);

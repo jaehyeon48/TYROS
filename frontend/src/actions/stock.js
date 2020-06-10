@@ -3,8 +3,10 @@ import axios from 'axios';
 import {
   CLEAR_STOCKS,
   STOCKS_LOADED,
-  STOCKS_ORGANIZED
+  STOCKS_ORGANIZED,
+  EDIT_POSITION_SUCCESS
 } from '../actions/types';
+
 
 const classifyStocks = (stocks) => {
   const classifiedStocks = {}
@@ -92,4 +94,21 @@ export const loadSharesOfPortfolio = portfolioId => async dispatch => {
   } catch (err) {
     console.error(err);
   }
-};
+}
+
+export const editPosition = (formData, portfolioId) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    formData.portfolioId = portfolioId;
+
+    await axios.post('/api/stock', JSON.stringify(formData), config);
+    dispatch({ type: EDIT_POSITION_SUCCESS });
+  } catch (err) {
+    console.error(err);
+  }
+}
