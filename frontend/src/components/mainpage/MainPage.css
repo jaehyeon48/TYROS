@@ -52,7 +52,7 @@
   grid-column: 1 / span 10;
 }
 
-.stock-item-TotalGain {
+.stock-item-totalGain {
   grid-row: 6;
   grid-column: 1 / span 10;
 }

@@ -1,5 +1,6 @@
 const Stock = require('../models/StockModel');
 const Portfolio = require('../models/PortfolioModel');
+const axios = require('axios');
 
 // @ROUTE         GET api/stock
 // @DESCRIPTION   Load all shares of the user
@@ -11,6 +12,48 @@ async function getAllShares(req, res) {
   } catch (err) {
     console.error(err);
     return res.status(500).json({ msg: 'Internal Server Error' });
+  }
+}
+
+// @ROUTE         GET api/stock/realTime/:ticker
+// @DESCRIPTION   get real time price of a share
+// @ACCESS        Private
+async function getRealTimePrice(req, res) {
+  const ticker = req.params.ticker.toUpperCase();
+  const url = `https://cloud.iexapis.com/stable/stock/${ticker}/quote/iexRealtimePrice?token=pk_37e934a52c6a451182f2dbf16615da50`;
+  try {
+    const response = await axios.get(url);
+    res.json(response.data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// @ROUTE         GET api/stock/change/:ticker
+// @DESCRIPTION   get change of the share from previous day
+// @ACCESS        Private
+async function getChangeOfShare(req, res) {
+  const ticker = req.params.ticker.toUpperCase();
+  const url = `https://cloud.iexapis.com/stable/stock/${ticker}/quote/change?token=pk_37e934a52c6a451182f2dbf16615da50`;
+  try {
+    const response = await axios.get(url);
+    res.json(response.data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// @ROUTE         GET api/stock/changePercent/:ticker
+// @DESCRIPTION   get change percent of the share from previous day
+// @ACCESS        Private
+async function getChangePercentOfShare(req, res) {
+  const ticker = req.params.ticker.toUpperCase();
+  const url = `https://cloud.iexapis.com/stable/stock/${ticker}/quote/changePercent?token=pk_37e934a52c6a451182f2dbf16615da50`;
+  try {
+    const response = await axios.get(url);
+    res.json(response.data);
+  } catch (err) {
+    console.error(err);
   }
 }
 
@@ -58,5 +101,8 @@ async function createNewPosition(req, res) {
 module.exports = {
   getAllShares,
   getSharesOfPortfolio,
+  getRealTimePrice,
+  getChangeOfShare,
+  getChangePercentOfShare,
   createNewPosition
 };
