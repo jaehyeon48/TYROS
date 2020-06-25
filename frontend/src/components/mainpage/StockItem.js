@@ -11,15 +11,17 @@ const StockItem = ({
   const [realTimePrice, setRealTimePrice] = useState({});
   const [todayGain, setTodayGain] = useState({});
   const [totalGain, setTotalGain] = useState({});
+
   useEffect(() => {
     setRealTimePrice({ [stock.ticker]: '' });
     setTotalGain({ [stock.ticker]: '' });
-    setInterval(async () => {
+    const intervalId = setInterval(async () => {
       setRealTimePrice({
         ...realTimePrice,
         [stock.ticker]: await getRealTimePrice(stock.ticker)
       });
     }, 4000); // for testing, use 4000ms
+    return () => clearInterval(intervalId); // cleaning up
   }, [stock]);
 
   useEffect(() => {

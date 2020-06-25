@@ -7,6 +7,7 @@ const {
   getAllShares,
   getSharesOfPortfolio,
   getRealTimePrice,
+  getClosePrice,
   getChangeOfShare,
   getChangePercentOfShare,
   createNewPosition,
@@ -23,6 +24,11 @@ router.get('/', auth, getAllShares);
 // @ACCESS        Private
 router.get('/realTime/:ticker', auth, getRealTimePrice);
 
+// @ROUTE         GET api/stock/close/:ticker
+// @DESCRIPTION   get close price of a share
+// @ACCESS        Private
+router.get('/close/:ticker', auth, getClosePrice);
+
 // @ROUTE         GET api/stock/change/:ticker
 // @DESCRIPTION   get change of the share from previous day
 // @ACCESS        Private
@@ -32,7 +38,6 @@ router.get('/change/:ticker', auth, getChangeOfShare);
 // @DESCRIPTION   get change percent of the share from previous day
 // @ACCESS        Private
 router.get('/changePercent/:ticker', auth, getChangePercentOfShare);
-
 
 // @ROUTE         GET api/stock/:portfolioId
 // @DESCRIPTION   Load all shares of the user
