@@ -32,6 +32,7 @@ const MainPage = ({
 }) => {
   const [isEditStockModalOpen, setIsEditStockModalOpen] = useState(false);
   const [isEditCashModalOpen, setIsEditCashModalOpen] = useState(false);
+  const [gainSelect, setGainSelect] = useState('todayGain');
 
   useEffect(() => {
     loadPortfolios();
@@ -56,6 +57,10 @@ const MainPage = ({
     selectPortfolio(event.target.value);
   };
 
+  const handleSelect = event => {
+    setGainSelect(event.target.value);
+  }
+
   const openEditPositionModal = () => setIsEditStockModalOpen(true);
   const closeEditPositionModal = () => setIsEditStockModalOpen(false);
   const openEditCashModal = () => setIsEditCashModalOpen(true);
@@ -76,6 +81,13 @@ const MainPage = ({
             </select>
           </div>
         )}
+        <div className="dropdown-select" onChange={e => handleSelect(e)}>
+          <select value={gainSelect} readOnly>
+            <option value="todayGain">Today Gain</option>
+            <option value="totalGain">Total Gain</option>
+          </select>
+        </div>
+
         <div className="action-edit-positions">
           <span className="edit-position" onClick={() => openEditPositionModal()}>Edit Position</span>
           <span className="edit-cash" onClick={() => openEditCashModal()}>Edit Cash</span>
@@ -86,7 +98,7 @@ const MainPage = ({
           <p className="stock-not-exist-msg">Please Create Your Portfolio first!</p>
         ) : null}
         {organizedStocks.length > 0 ? organizedStocks.map((share, index) => (
-          <StockItem stock={share} key={index} />
+          <StockItem stock={share} key={index} gainSelect={gainSelect} />
         )) : null}
         {portfolios.length > 0 && organizedStocks.length === 0 && (
           <p className="stock-not-exist-msg">Please Add Your Position first!</p>

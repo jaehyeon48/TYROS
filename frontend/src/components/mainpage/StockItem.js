@@ -6,11 +6,13 @@ import { calcTotalGain } from '../../utils/calcTotalGain';
 import { calcTodayGain } from '../../utils/calcTodayGain';
 
 const StockItem = ({
-  stock
+  stock,
+  gainSelect
 }) => {
   const [realTimePrice, setRealTimePrice] = useState({});
   const [todayGain, setTodayGain] = useState({});
   const [totalGain, setTotalGain] = useState({});
+  const [test, setTest] = useState(false)
 
   useEffect(() => {
     setRealTimePrice({ [stock.ticker]: '' });
@@ -20,7 +22,7 @@ const StockItem = ({
         ...realTimePrice,
         [stock.ticker]: await getRealTimePrice(stock.ticker)
       });
-    }, 4000); // for testing, use 4000ms
+    }, 3000);
     return () => clearInterval(intervalId); // cleaning up
   }, [stock]);
 
@@ -40,27 +42,41 @@ const StockItem = ({
     }
   }, [realTimePrice]);
 
+  const stockInfo = (
+    <React.Fragment>
+      <div className="stock-item-ticker">
+        {stock.ticker.toUpperCase()}
+      </div>
+      <div className="stock-item-realtime">{realTimePrice[stock.ticker]}</div>
+      <div className="stock-item-avgCost">
+        Avg.Cost: {stock.avgCost}
+      </div>
+      <div className="stock-item-quantity">
+        Quantity: {stock.quantity}
+      </div>
+      <div className="stock-item-todayGain">Today: {todayGain[stock.ticker] && <React.Fragment>
+        {todayGain[stock.ticker].change} ({todayGain[stock.ticker].changePercent})%
+        </React.Fragment>}</div>
+      <div className="stock-item-totalGain">Total: {totalGain[stock.ticker] && <React.Fragment>
+        {totalGain[stock.ticker].totalGain} ({totalGain[stock.ticker].totalGainPercent})%
+        </React.Fragment>}</div>
+    </React.Fragment>
+  );
+
   return (
     stock.quantity > 0 ? (
-      <div className="stock-item">
-        <div className="stock-item-ticker">
-          {stock.ticker.toUpperCase()}
-        </div>
-        <div className="stock-item-realtime">{realTimePrice[stock.ticker]}</div>
-        <div className="stock-item-avgCost">
-          Avg.Cost: {stock.avgCost}
-        </div>
-        <div className="stock-item-quantity">
-          Quantity: {stock.quantity}
-        </div>
-        <div className="stock-item-todayGain">Today: {todayGain[stock.ticker] && <React.Fragment>
-          {todayGain[stock.ticker].change} ({todayGain[stock.ticker].changePercent})%
-        </React.Fragment>}</div>
-        <div className="stock-item-totalGain">Total: {totalGain[stock.ticker] && <React.Fragment>
-          {totalGain[stock.ticker].totalGain} ({totalGain[stock.ticker].totalGainPercent})%
-        </React.Fragment>}</div>
-      </div>
-    ) : null
+      <React.Fragment>
+        {gainSelect === 'todayGain' ? (
+          <div className={todayGain[stock.ticker] && todayGain[stock.ticker].change > 0 ? "stock-item gain-positive" : "stock-item gain-negative"}>
+            {stockInfo}
+          </div>
+        ) : (
+            <div className={totalGain[stock.ticker] && totalGain[stock.ticker].totalGain > 0 ? "stock-item gain-positive" : "stock-item gain-negative"}>
+              {stockInfo}
+            </div>
+          )}
+      </React.Fragment>
+    ) : <div>is this?</div>
   );
 }
 

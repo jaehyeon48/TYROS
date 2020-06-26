@@ -14,7 +14,6 @@
 .stock-item {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  background-color: #429672;
   width: 245px;
   height: 350px;
   margin: 3rem;
@@ -55,6 +54,14 @@
 .stock-item-totalGain {
   grid-row: 6;
   grid-column: 1 / span 10;
+}
+
+.gain-positive {
+  background-color: #429672;
+}
+
+.gain-negative {
+  background-color: #cc2435;
 }
 
 select {
