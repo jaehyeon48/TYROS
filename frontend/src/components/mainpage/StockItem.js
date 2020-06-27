@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getRealTimePrice } from '../../utils/realTimePrice';
 import { calcTotalGain } from '../../utils/calcTotalGain';
 import { calcTodayGain } from '../../utils/calcTodayGain';
+import { checkMarketOpened } from '../../utils/isMarketOpen';
 
 const StockItem = ({
   stock,
@@ -12,18 +13,32 @@ const StockItem = ({
   const [realTimePrice, setRealTimePrice] = useState({});
   const [todayGain, setTodayGain] = useState({});
   const [totalGain, setTotalGain] = useState({});
-  const [test, setTest] = useState(false)
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  const [isMarketOpen, setIsMarketOpen] = useState(false);
+
+  useEffect(() => { setIsMarketOpen(checkMarketOpened()) }, []);
 
   useEffect(() => {
     setRealTimePrice({ [stock.ticker]: '' });
     setTotalGain({ [stock.ticker]: '' });
-    const intervalId = setInterval(async () => {
-      setRealTimePrice({
-        ...realTimePrice,
-        [stock.ticker]: await getRealTimePrice(stock.ticker)
-      });
-    }, 3000);
-    return () => clearInterval(intervalId); // cleaning up
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      (async () => {
+        setRealTimePrice({
+          ...realTimePrice,
+          [stock.ticker]: await getRealTimePrice(stock.ticker)
+        });
+      })();
+    }
+    if (isMarketOpen) {
+      const intervalId = setInterval(async () => {
+        setRealTimePrice({
+          ...realTimePrice,
+          [stock.ticker]: await getRealTimePrice(stock.ticker)
+        });
+      }, 3000);
+      return () => clearInterval(intervalId); // cleaning up when the user logged out
+    }
   }, [stock]);
 
   useEffect(() => {

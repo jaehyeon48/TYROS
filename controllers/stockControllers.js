@@ -26,9 +26,9 @@ async function getRealTimePrice(req, res) {
     res.json(response.data);
   } catch (err) {
     if (err.response.status === 404) {
-      res.status(404).json({ msg: 'The market is closed now.' });
+      return res.status(404).json({ msg: 'The market is closed now.' });
     }
-    console.error(err);
+    // console.error(err);
   }
 }
 
