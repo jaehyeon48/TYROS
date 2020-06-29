@@ -16,7 +16,12 @@ const StockItem = ({
   const [isFirstRender, setIsFirstRender] = useState(true);
   const [isMarketOpen, setIsMarketOpen] = useState(false);
 
-  useEffect(() => { setIsMarketOpen(checkMarketOpened()) }, []);
+  useEffect(() => {
+    (async () => {
+      const marketStatus = await checkMarketOpened();
+      setIsMarketOpen(marketStatus);
+    })();
+  }, []);
 
   useEffect(() => {
     setRealTimePrice({ [stock.ticker]: '' });
@@ -36,10 +41,10 @@ const StockItem = ({
           ...realTimePrice,
           [stock.ticker]: await getRealTimePrice(stock.ticker)
         });
-      }, 3000);
+      }, 5000);
       return () => clearInterval(intervalId); // cleaning up when the user logged out
     }
-  }, [stock]);
+  }, [stock, isMarketOpen]);
 
   useEffect(() => {
     if (!!realTimePrice[stock.ticker]) {
