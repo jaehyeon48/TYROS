@@ -54,10 +54,10 @@ async function getClosePrice(req, res) {
 // @ACCESS        Private
 async function getChangeOfShare(req, res) {
   const ticker = req.params.ticker.toUpperCase();
-  const url = `https://cloud.iexapis.com/stable/stock/${ticker}/quote/change?token=pk_37e934a52c6a451182f2dbf16615da50`;
+  const url = `https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=pk_37e934a52c6a451182f2dbf16615da50`;
   try {
     const response = await axios.get(url);
-    res.json(response.data);
+    res.json(response.data.change)
   } catch (err) {
     console.error(err);
   }
@@ -68,10 +68,10 @@ async function getChangeOfShare(req, res) {
 // @ACCESS        Private
 async function getChangePercentOfShare(req, res) {
   const ticker = req.params.ticker.toUpperCase();
-  const url = `https://cloud.iexapis.com/stable/stock/${ticker}/quote/changePercent?token=pk_37e934a52c6a451182f2dbf16615da50`;
+  const url = `https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=pk_37e934a52c6a451182f2dbf16615da50`;
   try {
     const response = await axios.get(url);
-    res.json(response.data);
+    res.json(response.data.changePercent);
   } catch (err) {
     console.error(err);
   }

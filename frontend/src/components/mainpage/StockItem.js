@@ -83,19 +83,35 @@ const StockItem = ({
     </React.Fragment>
   );
 
+  const renderColor = () => {
+    if (gainSelect === 'todayGain') {
+      if (todayGain[stock.ticker]) {
+        if (todayGain[stock.ticker].change > 0) {
+          return "stock-item gain-positive";
+        } else if (todayGain[stock.ticker].change < 0) {
+          return "stock-item gain-negative";
+        } else {
+          return "stock-item gain-zero";
+        }
+      }
+    } else if (gainSelect === 'totalGain') {
+      if (totalGain[stock.ticker]) {
+        if (totalGain[stock.ticker].totalGain > 0) {
+          return "stock-item gain-positive";
+        } else if (totalGain[stock.ticker].totalGain < 0) {
+          return "stock-item gain-negative";
+        } else {
+          return "stock-item gain-zero";
+        }
+      }
+    }
+  }
+
   return (
     stock.quantity > 0 ? (
-      <React.Fragment>
-        {gainSelect === 'todayGain' ? (
-          <div className={todayGain[stock.ticker] && todayGain[stock.ticker].change > 0 ? "stock-item gain-positive" : "stock-item gain-negative"}>
-            {stockInfo}
-          </div>
-        ) : (
-            <div className={totalGain[stock.ticker] && totalGain[stock.ticker].totalGain > 0 ? "stock-item gain-positive" : "stock-item gain-negative"}>
-              {stockInfo}
-            </div>
-          )}
-      </React.Fragment>
+      <div className={renderColor()}>
+        {stockInfo}
+      </div>
     ) : <div>is this?</div>
   );
 }

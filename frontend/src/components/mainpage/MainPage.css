@@ -64,6 +64,10 @@
   background-color: #cc2435;
 }
 
+.gain-zero {
+  background-color: #63676b;
+}
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
