@@ -37,10 +37,10 @@ async function getRealTimePrice(req, res) {
 // @ACCESS        Private
 async function getClosePrice(req, res) {
   const ticker = req.params.ticker.toUpperCase();
-  const url = `https://cloud.iexapis.com/stable/stock/${ticker}/quote/close?token=pk_37e934a52c6a451182f2dbf16615da50`;
+  const url = `https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=pk_37e934a52c6a451182f2dbf16615da50`;
   try {
     const response = await axios.get(url);
-    res.json(response.data);
+    res.json(response.data.iexClose);
   } catch (err) {
     if (err.response.status === 404) {
       res.status(404).json({ msg: 'Could not get close price' });

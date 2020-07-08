@@ -3,6 +3,8 @@ const config = require('config');
 
 const MONGO_URI = config.get('mongoURI');
 
+console.log(MONGO_URI)
+
 async function connectDB() {
   try {
     await mongoose.connect(MONGO_URI, {
